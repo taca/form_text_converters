@@ -73,6 +73,9 @@ class TFormValidater extends Frontend
 		return $status;
 	}
 
+	function validateFormField($objWidget, $intId) {
+		return $objWidget;
+	}
 }
 
 ?>

@@ -59,4 +59,6 @@
 
 $GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('TFormValidater', 'validateForm');
 
+$GLOBALS['TL_HOOKS']['validateFormField'][] = array('TFormValidater', 'validateFormField');
+
 ?>
