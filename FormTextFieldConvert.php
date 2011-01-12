@@ -29,17 +29,73 @@
  * PHP version 5
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe
- * @package    t-form-validations
+ * @package    
  * @license    2-clause-bsd
  * @filesource
  *
  */
 
-$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('TFormValidater', 'validateForm');
-
-/*
- * Frontend form fields
+/**
+ * Class TFormTextField
+ *
+ * @copyright  Takahiro Kambe 2011
+ * @author     Takahiro Kambe 
+ * @package    tFormTextField
  */
-$GLOBALS['TL_FFL']['tTextField'] = 'TFormTextField';
+
+class TFormTextField extends FormTextField
+{
+	protected $normalizer = NULL;
+
+	protected function debug($var)
+	{
+		$fh = fopen("/tmp/validate.data", "a");
+		fwrite($fh, print_r($var, true) . "\n");
+		fclose($fh);
+	}
+
+	protected function utf8_normalize($utf8_string, $type = 'NFKC')
+	{
+		if (is_null($this->normalizer)) {
+			include_once 'I18N/UnicodeNormalizer.php';
+			if (class_exists('I18N_UnicodeNormalizer', false)) {
+				$normalizer = new I18N_UnicodeNormalizer();
+			}
+		}
+		if ($normalizer) {
+			$utf8_string = $normalizer->normalize($utf8_string, $type);
+		}
+		return $utf8_string;
+	}
+
+	protected function ja_normalize($utf8_string, $type = 'KVas')
+	{
+		if ($GLOBALS['TL_LANGUAGE'] == 'ja' && USE_MBSTRING) {
+			$utf8_string = mb_convert_kana($utf8_string, $type);
+		}
+		return $utf8_string;
+	}
+
+	private function validate($varInput)
+	{
+		parent::validator($varInput);
+	}
+
+	/**
+	 * Trim values
+	 * @param mixed
+	 * @return mixed
+	 */
+	protected function validator($varInput)
+	{
+		if (is_array($varInput))
+		{
+			return $this->validate($varInput);
+		}
+
+		return $this->validate(trim($varInput));
+	}
+
+}
 
 ?>

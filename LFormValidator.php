@@ -38,28 +38,25 @@
 /**
  * Class FormValidater
  *
- * @copyright  Takahiro Kambe 2010 
+ * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe 
- * @package    Controller
+ * @package    t-form-validations
  */
+
 class TFormValidater extends Frontend
 {
 	function validateForm($rgxp, $varInput, $widget)
 	{
 		$status = true;
 
-		$fh = fopen("/tmp/validate.data", "a");
-		$s = print_r($widget, true);
-		fwrite($fh, $s . "\n");
-		fclose($fh);
-
 		switch ($rgxp)
 		{
 		case 'email-noidn':
-			if (!$widget->isValidEmailAddress($varInput))
+			if (!$widget->isValidEmailAddress($s))
 			{
 				$widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['email-noidn'], $widget->strLabel));
 			}
+			$varInput = $s;
 			break;
 		case 'url-noidn':
 			if (!preg_match('/^[a-zA-Z0-9\.\+\/\?#%:,;\{\}\(\)\[\]@&=~_-]*$/', $varInput))
@@ -71,10 +68,6 @@ class TFormValidater extends Frontend
 			$status = false;
 		}
 		return $status;
-	}
-
-	function validateFormField($objWidget, $intId) {
-		return $objWidget;
 	}
 }
 
