@@ -45,29 +45,29 @@
 
 class LFormValidator extends Frontend
 {
-	function validateForm($rgxp, $varInput, $widget)
-	{
-		$status = true;
+    function validateForm($rgxp, $varInput, $widget)
+    {
+        $status = true;
 
-		switch ($rgxp)
-		{
-		case 'email-noidn':
-			if (!$widget->isValidEmailAddress($varInput))
-			{
-				$widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['email-noidn'], $widget->strLabel));
-			}
-			break;
-		case 'url-noidn':
-			if (!preg_match('/^[a-zA-Z0-9\.\+\/\?#%:,;\{\}\(\)\[\]@&=~_-]*$/', $varInput))
-			{
-				$widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['url-noidn'], $widget->strLabel));
-			}
-			break;
-		default:
-			$status = false;
-		}
-		return $status;
-	}
+        switch ($rgxp)
+        {
+        case 'email-noidn':
+            if (!$widget->isValidEmailAddress($varInput))
+            {
+                $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['email-noidn'], $widget->strLabel));
+            }
+            break;
+        case 'url-noidn':
+            if (!preg_match('/^[a-zA-Z0-9\.\+\/\?#%:,;\{\}\(\)\[\]@&=~_-]*$/', $varInput))
+            {
+                $widget->addError(sprintf($GLOBALS['TL_LANG']['ERR']['url-noidn'], $widget->strLabel));
+            }
+            break;
+        default:
+            $status = false;
+        }
+        return $status;
+    }
 }
 
 ?>

@@ -45,57 +45,56 @@
 
 class LFormTextField extends FormTextField
 {
-	protected $normalizer = NULL;
+    protected $normalizer = NULL;
 
-	public function __construct($arrAttributes=false)
-	{
-		parent::__construct($arrAttributes);
-		$this->normalizer = LTextConverters::getInstance();
-	}
+    public function __construct($arrAttributes=false)
+    {
+        parent::__construct($arrAttributes);
+        $this->normalizer = LTextConverters::getInstance();
+    }
 
-	/**
-	 * Add specific attributes
-	 * @param string
-	 * @param mixed
-	 */
-	public function comment($strkey, $varValue)
-	{
-		switch ($strKey)
-		{
-		case 'normalize':
-			break;
-		case `halfkana`:
-			break;
-		case `fullkatakana`:
-			break;
-		case `fullhiragana`:
-			break;
-		default:
-			
-			parent::__set($strkey, $varValue);
-			break;
-		}
-	}
+    /**
+     * Add specific attributes
+     * @param string
+     * @param mixed
+     */
+    public function comment($strkey, $varValue)
+    {
+        switch ($strKey)
+        {
+        case 'normalize':
+            break;
+        case `halfkana`:
+            break;
+        case `fullkatakana`:
+            break;
+        case `fullhiragana`:
+            break;
+        default:
+            parent::__set($strkey, $varValue);
+            break;
+        }
+    }
 
-	/**
-	 * validate values
-	 * @param mixed
-	 * @return mixed
-	 */
-	protected function validator($varInput)
-	{
-		if (is_array($varInput))
-		{
-			foreach ($varInput as $k=>$v)
-			{
-				$varInput[$k] = $this->validator($v);
-			}
-			return $varInput;
-		}
+    /**
+     * validate values
+     * @param mixed
+     * @return mixed
+     */
+    protected function validator($varInput)
+    {
+        if (is_array($varInput))
+        {
+            foreach ($varInput as $k=>$v)
+            {
+                $varInput[$k] = $this->validator($v);
+            }
+            return $varInput;
+        }
 
-		$s = $this->normalizer->ja_normalize(trim($varInput));
-		return parent::validator($s);
-	}
+        $s = $this->normalizer->ja_normalize(trim($varInput));
+        return parent::validator($s);
+    }
 }
 
 ?>

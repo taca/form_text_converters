@@ -45,73 +45,73 @@
 
 class LTextConverters
 {
-	/**
-	 * Current object instance (Singleton)
-	 * @var object
-	 */
-	protected static $objInstance;
+    /**
+     * Current object instance (Singleton)
+     * @var object
+     */
+    protected static $objInstance;
 
-	/**
-	 * Prevent direct instantiation (Singleton)
-	 */
-	protected function __construct() {}
+    /**
+     * Prevent direct instantiation (Singleton)
+     */
+    protected function __construct() {}
 
-	/**
-	 * Prevent cloning of the object (Singleton)
-	 */
-	final private function __clone() {}
+    /**
+     * Prevent cloning of the object (Singleton)
+     */
+    final private function __clone() {}
 
-	/**
-	 * Instantiate a files driver object and return it (Factory)
-	 * @return object
-	 */
-	public static function getInstance()
-	{
-		if (!is_object(self::$objInstance))
-		{
-			self::$objInstance = new LTextConverters();
-		}
+    /**
+     * Instantiate a files driver object and return it (Factory)
+     * @return object
+     */
+    public static function getInstance()
+    {
+        if (!is_object(self::$objInstance))
+        {
+            self::$objInstance = new LTextConverters();
+        }
 
-		return self::$objInstance;
-	}
+        return self::$objInstance;
+    }
 
-	protected function debug($var)
-	{
-		$fh = fopen("/tmp/lform.data", "a");
-		fwrite($fh, print_r($var, true) . "\n");
-		fclose($fh);
-	}
+    protected function debug($var)
+    {
+        $fh = fopen("/tmp/lform.data", "a");
+        fwrite($fh, print_r($var, true) . "\n");
+        fclose($fh);
+    }
 
-	public function utf8_normalize($utf8_string, $type = 'NFKC')
-	{
-		if (empty($type)) {
-			return $utf8_string;
-		}
+    public function utf8_normalize($utf8_string, $type = 'NFKC')
+    {
+        if (empty($type)) {
+            return $utf8_string;
+        }
 
-		$normalizer = NULL;
-		if (is_null($this->normalizer)) {
-			include_once 'I18N/UnicodeNormalizer.php';
-			if (class_exists('I18N_UnicodeNormalizer', false)) {
-				$this->import('I18N_UnicodeNormalizer');
-				$normalizer = $this->I18N_UnicodeNormalizer;
-			}
-		}
-		if ($normalizer) {
-			$utf8_string = $normalizer->normalize($utf8_string, $type);
-		}
-		return $utf8_string;
-	}
+        $normalizer = NULL;
+        if (is_null($this->normalizer)) {
+            include_once 'I18N/UnicodeNormalizer.php';
+            if (class_exists('I18N_UnicodeNormalizer', false)) {
+                $this->import('I18N_UnicodeNormalizer');
+                $normalizer = $this->I18N_UnicodeNormalizer;
+            }
+        }
+        if ($normalizer) {
+            $utf8_string = $normalizer->normalize($utf8_string, $type);
+        }
+        return $utf8_string;
+    }
 
-	public function ja_normalize($utf8_string, $type = 'KVas')
-	{
-		if (empty($type)) {
-			return $utf8_string;
-		}
-		if (USE_MBSTRING) {
-			$utf8_string = mb_convert_kana($utf8_string, $type);
-		}
-		return $utf8_string;
-	}
+    public function ja_normalize($utf8_string, $type = 'KVas')
+    {
+        if (empty($type)) {
+            return $utf8_string;
+        }
+        if (USE_MBSTRING) {
+            $utf8_string = mb_convert_kana($utf8_string, $type);
+        }
+        return $utf8_string;
+    }
 }
 
 ?>
