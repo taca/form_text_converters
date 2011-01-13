@@ -35,11 +35,13 @@
  *
  */
 
-$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('TFormValidater', 'validateForm');
+$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('TFormValidator', 'validateForm');
+
+$GLOBALS['BE_FFL']['tText'] = 'TFormTextField';
 
 /*
  * Frontend form fields
  */
-$GLOBALS['TL_FFL']['tTextField'] = 'TFormTextField';
+$GLOBALS['TL_FFL']['tText'] = 'TFormTextField';
 
 ?>
