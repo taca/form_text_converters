@@ -29,7 +29,7 @@
  * PHP version 5
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe
- * @package    
+ * @package    tFormText
  * @license    2-clause-bsd
  * @filesource
  *
@@ -40,7 +40,7 @@
  *
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe 
- * @package    tFormTextField
+ * @package    tFormText
  */
 
 class TFormTextField extends FormTextField

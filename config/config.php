@@ -29,14 +29,20 @@
  * PHP version 5
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe
- * @package    t-form-validations
+ * @package    tFormText
  * @license    2-clause-bsd
  * @filesource
  *
  */
 
+/*
+ * Add more validator with hook.
+ */
 $GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('TFormValidator', 'validateForm');
 
+/*
+ * Backend form fields
+ */
 $GLOBALS['BE_FFL']['tText'] = 'TFormTextField';
 
 /*
