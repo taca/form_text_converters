@@ -45,6 +45,10 @@
 
 class LFormTextField extends FormTextField
 {
+	/**
+	 * TextConverter
+	 * @var object
+	 */
     protected $normalizer = NULL;
 
     public function __construct($arrAttributes=false)
