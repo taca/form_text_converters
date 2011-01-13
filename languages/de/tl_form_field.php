@@ -2,7 +2,10 @@
 
 $GLOBALS['TL_LANG']['tl_form_field']['tText'] = array('Small extended text field', 'A text field with small extension.');
 
-$GLOBALS['TL_LANG']['ERR']['email-noidn'] = 'Please enter valid e-mail address without Internationalizing Domain Names!';
-$GLOBALS['TL_LANG']['ERR']['url-noidn'] = 'Please enter valid URL without Internationalizing Domain Names!';
-
+$GLOBALS['TL_LANG']['tl_form_field']['email-noidn'] = 
+	array('E-mail address without IDN', 
+	      'Prüft, ob die Eingabe einer gültigen E-Mail-Adresse ohne IDN (Internationalisierung Domain Names) ist.');
+$GLOBALS['TL_LANG']['tl_form_field']['url-noidn'] = 
+	array('URL format without IDN',
+	      'Prüft, ob die Eingabe einer gültigen URL ohne IDN (Internationalisierung Domain Names) ist.');
 ?>
