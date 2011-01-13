@@ -47,42 +47,37 @@ class TFormTextField extends FormTextField
 {
 	protected $normalizer = NULL;
 
-	protected function debug($var)
+	public function __construct($arrAttributes=false)
 	{
-		$fh = fopen("/tmp/validate.data", "a");
-		fwrite($fh, print_r($var, true) . "\n");
-		fclose($fh);
-	}
-
-	protected function utf8_normalize($utf8_string, $type = 'NFKC')
-	{
-		if (is_null($this->normalizer)) {
-			include_once 'I18N/UnicodeNormalizer.php';
-			if (class_exists('I18N_UnicodeNormalizer', false)) {
-				$normalizer = new I18N_UnicodeNormalizer();
-			}
-		}
-		if ($normalizer) {
-			$utf8_string = $normalizer->normalize($utf8_string, $type);
-		}
-		return $utf8_string;
-	}
-
-	protected function ja_normalize($utf8_string, $type = 'KVas')
-	{
-		if ($GLOBALS['TL_LANGUAGE'] == 'ja' && USE_MBSTRING) {
-			$utf8_string = mb_convert_kana($utf8_string, $type);
-		}
-		return $utf8_string;
-	}
-
-	private function validate($varInput)
-	{
-		parent::validator($varInput);
+		parent::__construct($arrAttributes);
+		$this->normalizer = TTextConverters::getInstance();
 	}
 
 	/**
-	 * Trim values
+	 * Add specific attributes
+	 * @param string
+	 * @param mixed
+	 */
+	public function __set($strkey, $varValue)
+	{
+		switch ($strKey)
+		{
+		case 'normalize':
+			break;
+		case `halfkana`:
+			break;
+		case `fullkatakana`:
+			break;
+		case `fullhiragana`:
+			break;
+		default:
+			parent::_set($strkey, $varValue);
+			break;
+		}
+	}
+
+	/**
+	 * validate values
 	 * @param mixed
 	 * @return mixed
 	 */
@@ -90,10 +85,15 @@ class TFormTextField extends FormTextField
 	{
 		if (is_array($varInput))
 		{
-			return $this->validate($varInput);
+			foreach ($varInput as $k=>$v)
+			{
+				$varInput[$k] = $this->validator($v);
+			}
+			return $varInput;
 		}
 
-		return $this->validate(trim($varInput));
+		$s = $this->normalizer->ja_normalize(trim($varInput));
+		return parent::validator($s);
 	}
 
 }
