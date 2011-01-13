@@ -58,7 +58,7 @@ class TFormTextField extends FormTextField
 	 * @param string
 	 * @param mixed
 	 */
-	public function __set($strkey, $varValue)
+	public function comment($strkey, $varValue)
 	{
 		switch ($strKey)
 		{
@@ -71,7 +71,8 @@ class TFormTextField extends FormTextField
 		case `fullhiragana`:
 			break;
 		default:
-			parent::_set($strkey, $varValue);
+			
+			parent::__set($strkey, $varValue);
 			break;
 		}
 	}
@@ -95,7 +96,6 @@ class TFormTextField extends FormTextField
 		$s = $this->normalizer->ja_normalize(trim($varInput));
 		return parent::validator($s);
 	}
-
 }
 
 ?>
