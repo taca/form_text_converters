@@ -29,21 +29,21 @@
  * PHP version 5
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe
- * @package    tFormText
+ * @package    lFormText
  * @license    2-clause-bsd
  * @filesource
  *
  */
 
 /**
- * Class TTextConverters
+ * Class LTextConverters
  *
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe 
- * @package    tFormText
+ * @package    lFormText
  */
 
-class TTextConverters
+class LTextConverters
 {
 	/**
 	 * Current object instance (Singleton)
@@ -69,7 +69,7 @@ class TTextConverters
 	{
 		if (!is_object(self::$objInstance))
 		{
-			self::$objInstance = new TTextConverters();
+			self::$objInstance = new LTextConverters();
 		}
 
 		return self::$objInstance;
@@ -77,7 +77,7 @@ class TTextConverters
 
 	protected function debug($var)
 	{
-		$fh = fopen("/tmp/tform.data", "a");
+		$fh = fopen("/tmp/lform.data", "a");
 		fwrite($fh, print_r($var, true) . "\n");
 		fclose($fh);
 	}

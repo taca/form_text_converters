@@ -1,6 +1,6 @@
 <?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
 
-$GLOBALS['TL_LANG']['tl_form_field']['tText'] = array('小拡張テキスト入力', 'ちょっとした拡張を加えたテキスト入力の欄です。');
+$GLOBALS['TL_LANG']['tl_form_field']['lText'] = array('小拡張テキスト入力', 'ちょっとした拡張を加えたテキスト入力の欄です。');
 
 $GLOBALS['TL_LANG']['tl_form_field']['email-noidn'] = 
 	array('非国際化電子メールアドレス', 

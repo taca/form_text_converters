@@ -29,28 +29,28 @@
  * PHP version 5
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe
- * @package    tFormText
+ * @package    lFormText
  * @license    2-clause-bsd
  * @filesource
  *
  */
 
 /**
- * Class TFormTextField
+ * Class LFormTextField
  *
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe 
- * @package    tFormText
+ * @package    lFormText
  */
 
-class TFormTextField extends FormTextField
+class LFormTextField extends FormTextField
 {
 	protected $normalizer = NULL;
 
 	public function __construct($arrAttributes=false)
 	{
 		parent::__construct($arrAttributes);
-		$this->normalizer = TTextConverters::getInstance();
+		$this->normalizer = LTextConverters::getInstance();
 	}
 
 	/**

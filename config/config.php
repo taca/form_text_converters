@@ -38,16 +38,16 @@
 /*
  * Add more validator with hook.
  */
-$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('TFormValidator', 'validateForm');
+$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('LFormValidator', 'validateForm');
 
 /*
  * Backend form fields
  */
-$GLOBALS['BE_FFL']['tText'] = 'TFormTextField';
+$GLOBALS['BE_FFL']['lText'] = 'LFormTextField';
 
 /*
  * Frontend form fields
  */
-$GLOBALS['TL_FFL']['tText'] = 'TFormTextField';
+$GLOBALS['TL_FFL']['lText'] = 'LFormTextField';
 
 ?>

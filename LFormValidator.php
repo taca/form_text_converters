@@ -29,7 +29,7 @@
  * PHP version 5
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe
- * @package    tFormText
+ * @package    lFormText
  * @license    2-clause-bsd
  * @filesource
  *
@@ -40,10 +40,10 @@
  *
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe 
- * @package    tFormText
+ * @package    lFormText
  */
 
-class TFormValidator extends Frontend
+class LFormValidator extends Frontend
 {
 	function validateForm($rgxp, $varInput, $widget)
 	{
