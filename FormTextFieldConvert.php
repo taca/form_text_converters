@@ -45,18 +45,6 @@
 
 class LFormTextField extends FormTextField
 {
-	/**
-	 * TextConverter
-	 * @var object
-	 */
-    protected $normalizer = NULL;
-
-    public function __construct($arrAttributes=false)
-    {
-        parent::__construct($arrAttributes);
-        $this->normalizer = LTextConverters::getInstance();
-    }
-
     /**
      * validate values
      * @param mixed
@@ -73,7 +61,7 @@ class LFormTextField extends FormTextField
             return $varInput;
         }
 
-        $s = $this->normalizer->normalize(trim($varInput), $this);
+        $s = LTextConverters::normalize(trim($varInput), $this);
         return parent::validator($s);
     }
 }
