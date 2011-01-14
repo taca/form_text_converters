@@ -45,68 +45,43 @@
 
 class LTextConverters
 {
-    /**
-     * Current object instance (Singleton)
-     * @var object
-     */
-    protected static $objInstance;
+    protected static $normalizer;
 
     /**
      * convert map for mb_string_kana() half/full-width
      * @var array
      */
-    private $fwmap = array(
+    private static $fwmap = array(
         'alpha' => 'r', 'digit' => 'n', 'space' => 's', 'alnum' => 'a');
 
     /**
      * convert map from half-width Katakana for mb_string_kana()
      * @var array
      */
-    private $hKatakana = array('toFKatakana' => 'K', 'toFHiragana' => 'H');
+    private static $hKatakana = array(
+        'toFKatakana' => 'K', 'toFHiragana' => 'H');
 
     /**
      * option string for merge Dakuten/Handakuten for mb_string_kana()
      * @var string
      */
-    private $hDakuten = 'V';
+    private static $hDakuten = 'V';
 
     /**
      * convert map from full-width Katakana for mb_string_kana()
      * @var array
      */
-    private $fKatakana = array('toFHiragana' => 'c', 'toHKatakana' => 'k');
+    private static $fKatakana = array(
+        'toFHiragana' => 'c', 'toHKatakana' => 'k');
 
     /**
      * convert map from full-width Hiragana for mb_string_kana()
      * @var array
      */
-    private $fHiragana = array('toFKatakana' => 'C', 'toHKatakana' => 'h');
+    private static $fHiragana = array(
+        'toFKatakana' => 'C', 'toHKatakana' => 'h');
 
-    /**
-     * Prevent direct instantiation (Singleton)
-     */
-    protected function __construct() {}
-
-    /**
-     * Prevent cloning of the object (Singleton)
-     */
-    final private function __clone() {}
-
-    /**
-     * Instantiate a files driver object and return it (Factory)
-     * @return object
-     */
-    public static function getInstance()
-    {
-        if (!is_object(self::$objInstance))
-        {
-            self::$objInstance = new LTextConverters();
-        }
-
-        return self::$objInstance;
-    }
-
-    public function utf8_normalize($utf8_string, $type = 'NFKC')
+    public static function utf8_normalize($utf8_string, $type = 'NFKC')
     {
         if (empty($type)) {
             return $utf8_string;
@@ -114,11 +89,10 @@ class LTextConverters
 
         $type = strtoupper($type);
         $normalizer = NULL;
-        if (is_null($this->normalizer)) {
+        if (is_null(self::$normalizer)) {
             include_once 'I18N/UnicodeNormalizer.php';
             if (class_exists('I18N_UnicodeNormalizer', false)) {
-                $this->import('I18N_UnicodeNormalizer');
-                $normalizer = $this->I18N_UnicodeNormalizer;
+                self::$normalizer = $normalizer = new I18N_UnicodeNormalizer();
             }
         }
         if ($normalizer) {
@@ -127,7 +101,7 @@ class LTextConverters
         return $utf8_string;
     }
 
-    public function ja_normalize($utf8_string, $conv = 'KVas')
+    public static function ja_normalize($utf8_string, $conv = 'KVas')
     {
         if (empty($conv)) {
             return $utf8_string;
@@ -136,32 +110,32 @@ class LTextConverters
         return $utf8_string;
     }
 
-    public function normalize($utf8_string, $widgetObject)
+    public static function normalize($utf8_string, $widgetObject)
     {
         $s = $utf8_string;
         if (!empty($widgetObject->normalize)) {
-            $s = $this->utf8_normalize($s, $widgetObject->normalize);
+            $s = self::utf8_normalize($s, $widgetObject->normalize);
         }
         if (USE_MBSTRING) {
             $conv = '';
-            foreach ($this->fwmap as $k => $v) {
+            foreach (self::$fwmap as $k => $v) {
                 switch ($widgetObject->$k) {
                 case 'toHalfwidth':
-                    $conv .= $this->fwmap[$k];
+                    $conv .= self::$fwmap[$k];
                     break;
                 case 'toFullwidth':
-                    $conv .= strtoupper($this->fwmap[$k]);
+                    $conv .= strtoupper(self::$fwmap[$k]);
                     break;
                 }
             }
-            $value = $this->hKatakana[$widgetObject->hKatakana];
+            $value = self::$hKatakana[$widgetObject->hKatakana];
             if (!empty($value) && $widgetObject->hDakuten) {
-                $value .= $this->hDakuten;
+                $value .= self::$hDakuten;
             }
             $conv .= $value;
-            $conv .= $this->fKatakana[$widgetObject->fKatakana];
-            $conv .= $this->fHiragana[$widgetObject->fHiragana];
-            $s = $this->ja_normalize($s, $conv);
+            $conv .= self::$fKatakana[$widgetObject->fKatakana];
+            $conv .= self::$fHiragana[$widgetObject->fHiragana];
+            $s = self::ja_normalize($s, $conv);
         }
         return $s;
     }
