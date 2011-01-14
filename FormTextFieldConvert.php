@@ -61,7 +61,10 @@ class LFormTextField extends FormTextField
             return $varInput;
         }
 
-        $s = LTextConverters::normalize(trim($varInput), $this);
+        $s = trim($varInput);
+        if ($this->conversion) {
+            $s = LTextConverters::normalize($s, $this);
+        }
         return parent::validator($s);
     }
 }
