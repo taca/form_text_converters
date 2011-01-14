@@ -10,13 +10,14 @@ $GLOBALS['TL_LANG']['FFL']['lText'] = array('Small extended text field', 'A text
  */
 $GLOBALS['TL_LANG']['tl_form_field']['lText'] = array('Small extended text field', 'A text field with small extension.');
 
-$GLOBALS['TL_LANG']['tl_form_field']['normalize']    = array('Unicode Normalization', 'Perform Unicode Normalization of submitted text.');
+$GLOBALS['TL_LANG']['tl_form_field']['conversion']   = array('Conversion of input text', 'Perform conversion of input text; Unicode Normalization and/or full-widh/half-width conversion for Japanese.');
+$GLOBALS['TL_LANG']['tl_form_field']['normalize']    = array('Unicode Normalization', 'Perform Unicode Normalization of submitted text according to setting.');
 $GLOBALS['TL_LANG']['tl_form_field']['alpha']    = array('Conversion of alphabetic characters', 'Convert alphabetic characters into full-width or half-width characters.');
 $GLOBALS['TL_LANG']['tl_form_field']['digit']    = array('Conversion of numeric chracters', 'Convert numeric characters into full-width or half-width characters');
 $GLOBALS['TL_LANG']['tl_form_field']['alnum']    = array('Conversion of alphanumeric characters', 'Conversion of alphanumeric characters including symbols into full-width or half-width characters.  When converting to full-width characters, these characters are not be converted: &quot;  &#39; &#92; &#126;');
 $GLOBALS['TL_LANG']['tl_form_field']['space']    = array('Conversion of space', 'Convert space characters into full-width or half-width space.');
 $GLOBALS['TL_LANG']['tl_form_field']['hKatakana']    = array('Conversion of half-width Katakana', 'Convert half-width Katakana into full-width Hiragana or Katakana.');
-$GLOBALS['TL_LANG']['tl_form_field']['hDakuten'] = array('Compose (semi-)voiced sound mark of half-width Katakana', 'When converting half-width Katakana into full-widh Katakana or Hiragana, Compose voiced sound mark and semi-voiced sound mark with previous character if possible.');
+$GLOBALS['TL_LANG']['tl_form_field']['hDakuten'] = array('Compose (semi-)voiced sound marks', 'When converting half-width Katakana into full-widh Katakana or Hiragana, Compose voiced sound mark and semi-voiced sound mark with previous character if possible.');
 $GLOBALS['TL_LANG']['tl_form_field']['fKatakana']    = array('Conversion of full-width Katakana', 'Convert full-width Katakana into full-width Hiragana or half-width Katakana.');
 $GLOBALS['TL_LANG']['tl_form_field']['fHiragana']    = array('Concversion of full-width Hiragana', 'Convert full-width Hiragana into full-width Katakana or half-width Katakana.');
  

@@ -10,6 +10,7 @@ $GLOBALS['TL_LANG']['FFL']['lText'] = array('Lテキスト入力', 'ちょっと
  * 項目
  */
 $GLOBALS['TL_LANG']['tl_form_field']['lText'] = array('小拡張テキスト入力', 'ちょっとした拡張を加えたテキスト入力の欄です。');
+$GLOBALS['TL_LANG']['tl_form_field']['conversion']    = array('入力文字列の変換', '入力文字列の変換処理を行います、すなわちUnicodeの正規化や日本語の全角文字と半角文字の変換を設定にしたがって行います。');
 $GLOBALS['TL_LANG']['tl_form_field']['normalize']    = array('Unicodeの正規化', 'Unicodeの正規化を行います。');
 $GLOBALS['TL_LANG']['tl_form_field']['alpha']    = array('英文字の変換', '英文字を全角文字または半角文字に変換します。');
 $GLOBALS['TL_LANG']['tl_form_field']['digit']    = array('数字の変換', '数字を全角文字または半角文字に変換します。');
