@@ -3,6 +3,7 @@
 ---
 
 CREATE TABLE `tl_form_field` (
+  `conversion` char(1) NOT NULL default '',
   `normalize` varchar(4) NOT NULL default '',
   `alpha` varchar(12) NOT NULL default '',
   `digit` varchar(12) NOT NULL default '',
