@@ -52,6 +52,37 @@ class LTextConverters
     protected static $objInstance;
 
     /**
+     * convert map for mb_string_kana() half/full-width
+     * @var array
+     */
+    private $fwmap = array(
+        'alpha' => 'r', 'digit' => 'n', 'space' => 's', 'alnum' => 'a');
+
+    /**
+     * convert map from half-width Katakana for mb_string_kana()
+     * @var array
+     */
+    private $hKatakana = array('toFKatakana' => 'K', 'toFHiragana' => 'H');
+
+    /**
+     * option string for merge Dakuten/Handakuten for mb_string_kana()
+     * @var string
+     */
+    private $hDakuten = 'V';
+
+    /**
+     * convert map from full-width Katakana for mb_string_kana()
+     * @var array
+     */
+    private $fKatakana = array('toFHiragana' => 'c', 'toHKatakana' => 'k');
+
+    /**
+     * convert map from full-width Hiragana for mb_string_kana()
+     * @var array
+     */
+    private $fHiragana = array('toFKatakana' => 'C', 'toHKatakana' => 'h');
+
+    /**
      * Prevent direct instantiation (Singleton)
      */
     protected function __construct() {}
@@ -75,19 +106,13 @@ class LTextConverters
         return self::$objInstance;
     }
 
-    protected function debug($var)
-    {
-        $fh = fopen("/tmp/lform.data", "a");
-        fwrite($fh, print_r($var, true) . "\n");
-        fclose($fh);
-    }
-
     public function utf8_normalize($utf8_string, $type = 'NFKC')
     {
         if (empty($type)) {
             return $utf8_string;
         }
 
+        $type = strtoupper($type);
         $normalizer = NULL;
         if (is_null($this->normalizer)) {
             include_once 'I18N/UnicodeNormalizer.php';
@@ -102,15 +127,43 @@ class LTextConverters
         return $utf8_string;
     }
 
-    public function ja_normalize($utf8_string, $type = 'KVas')
+    public function ja_normalize($utf8_string, $conv = 'KVas')
     {
-        if (empty($type)) {
+        if (empty($conv)) {
             return $utf8_string;
         }
-        if (USE_MBSTRING) {
-            $utf8_string = mb_convert_kana($utf8_string, $type);
-        }
+        $utf8_string = mb_convert_kana($utf8_string, $conv);
         return $utf8_string;
+    }
+
+    public function normalize($utf8_string, $widgetObject)
+    {
+        $s = $utf8_string;
+        if (!empty($widgetObject->normalize)) {
+            $s = $this->utf8_normalize($s, $widgetObject->normalize);
+        }
+        if (USE_MBSTRING) {
+            $conv = '';
+            foreach ($this->fwmap as $k => $v) {
+                switch ($widgetObject->$k) {
+                case 'toHalfwidth':
+                    $conv .= $this->fwmap[$k];
+                    break;
+                case 'toFullwidth':
+                    $conv .= strtoupper($this->fwmap[$k]);
+                    break;
+                }
+            }
+            $value = $this->hKatakana[$widgetObject->hKatakana];
+            if (!empty($value) && $widgetObject->hDakuten) {
+                $value .= $this->hDakuten;
+            }
+            $conv .= $value;
+            $conv .= $this->fKatakana[$widgetObject->fKatakana];
+            $conv .= $this->fHiragana[$widgetObject->fHiragana];
+            $s = $this->ja_normalize($s, $conv);
+        }
+        return $s;
     }
 }
 
