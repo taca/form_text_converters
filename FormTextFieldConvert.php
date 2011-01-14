@@ -58,29 +58,6 @@ class LFormTextField extends FormTextField
     }
 
     /**
-     * Add specific attributes
-     * @param string
-     * @param mixed
-     */
-    public function comment($strkey, $varValue)
-    {
-        switch ($strKey)
-        {
-        case 'normalize':
-            break;
-        case `halfkana`:
-            break;
-        case `fullkatakana`:
-            break;
-        case `fullhiragana`:
-            break;
-        default:
-            parent::__set($strkey, $varValue);
-            break;
-        }
-    }
-
-    /**
      * validate values
      * @param mixed
      * @return mixed
@@ -96,7 +73,7 @@ class LFormTextField extends FormTextField
             return $varInput;
         }
 
-        $s = $this->normalizer->ja_normalize(trim($varInput));
+        $s = $this->normalizer->normalize(trim($varInput), $this);
         return parent::validator($s);
     }
 }
