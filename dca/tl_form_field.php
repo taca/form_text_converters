@@ -30,7 +30,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['normalize'] = array
 
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['alpha'] = array
 (
-    'label'     => &$GLOBALS['TL_LANG']['tl_form_field']['alpha'],
+    'label'     => &$GLOBALS['TL_LANG']['tl_form_field']['convert_alpha'],
 	'inputType' => 'select',
     'options'   => array('none', 'toHalfwidth', 'toFullwidth'),
     'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
@@ -39,7 +39,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['alpha'] = array
 
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['digit'] = array
 (
-    'label'     => &$GLOBALS['TL_LANG']['tl_form_field']['digit'],
+    'label'     => &$GLOBALS['TL_LANG']['tl_form_field']['convert_digit'],
 	'inputType' => 'select',
     'options'   => array('none', 'toHalfwidth', 'toFullwidth'),
     'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
@@ -48,7 +48,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['digit'] = array
 
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['alnum'] = array
 (
-    'label'     => &$GLOBALS['TL_LANG']['tl_form_field']['alnum'],
+    'label'     => &$GLOBALS['TL_LANG']['tl_form_field']['convert_alnum'],
 	'inputType' => 'select',
     'options'   => array('none', 'toHalfwidth', 'toFullwidth'),
     'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
