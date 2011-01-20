@@ -44,7 +44,8 @@ class LTextConverters
      * @var array
      */
     private static $fwmap = array(
-        'alpha' => 'r', 'digit' => 'n', 'space' => 's', 'alnum' => 'a');
+        'convert_alpha' => 'r', 'convert_digit' => 'n',
+        'convert_space' => 's', 'convert_alnum' => 'a');
 
     /**
      * convert map from half-width Katakana for mb_string_kana()
@@ -73,17 +74,17 @@ class LTextConverters
     private static $fHiragana = array(
         'toFKatakana' => 'C', 'toHKatakana' => 'h');
 
-    public static function utf8_normalize($utf8_string, $type = 'NFKC')
+    public static function normalize_utf8($utf8_string, $type = 'NFKC')
     {
         if (empty($type)) {
             return $utf8_string;
         }
 
         $type = strtoupper($type);
-        $normalizer = NULL;
-        if (is_null(self::$normalizer)) {
-            include_once 'I18N/UnicodeNormalizer.php';
-            if (class_exists('I18N_UnicodeNormalizer', false)) {
+        $normalizer = self::$normalizer;
+        if (is_null($normalizer)) {
+            include_once dirname(__FILE__) . '/I18N/UnicodeNormalizer.php';
+            if (class_exists('I18N_UnicodeNormalizer', true)) {
                 self::$normalizer = $normalizer = new I18N_UnicodeNormalizer();
             }
         }
@@ -93,7 +94,7 @@ class LTextConverters
         return $utf8_string;
     }
 
-    public static function ja_normalize($utf8_string, $conv = 'KVas')
+    public static function normalize_ja($utf8_string, $conv = 'KVas')
     {
         if (empty($conv)) {
             return $utf8_string;
@@ -104,10 +105,8 @@ class LTextConverters
 
     public static function normalize($utf8_string, $widgetObject)
     {
-        $s = $utf8_string;
-        if (!empty($widgetObject->normalize)) {
-            $s = self::utf8_normalize($s, $widgetObject->normalize);
-        }
+        $s = self::normalize_utf8($utf8_string, $widgetObject->normalize);
+
         if (USE_MBSTRING) {
             $conv = '';
             foreach (self::$fwmap as $k => $v) {
@@ -127,7 +126,7 @@ class LTextConverters
             $conv .= $value;
             $conv .= self::$fKatakana[$widgetObject->fKatakana];
             $conv .= self::$fHiragana[$widgetObject->fHiragana];
-            $s = self::ja_normalize($s, $conv);
+            $s = self::normalize_ja($s, $conv);
         }
         return $s;
     }
