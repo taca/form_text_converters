@@ -3,10 +3,19 @@
 /**
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_form_field']['palettes']['lText'] = '{type_legend},type,name,label;{fconfig_legend},mandatory,rgxp,maxlength;{ltext_legend:hide},conversion;{expert_legend:hide},value,class,accesskey;{submit_legend},addSubmit';
+
+foreach (array('text', 'textArea') as $key) {
+    $s = preg_replace('/{expert_legend(:hide)*}[^;]+/',
+           '{conversion_legend:hide},conversion;$0',
+            $GLOBALS['TL_DCA']['tl_form_field']['palettes'][strtolower($key)]);
+    if (is_null($s)) {
+        next;
+    }
+    $GLOBALS['TL_DCA']['tl_form_field']['palettes']['l' . ucfirst($key)] = $s;
+}
 
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['__selector__'][] = 'conversion';
-$GLOBALS['TL_DCA']['tl_form_field']['subpalettes']['conversion'] = 'normalize,alpha,digit,alnum,space,hKatakana,hDakuten,fKatakana,fHiragana';
+$GLOBALS['TL_DCA']['tl_form_field']['subpalettes']['conversion'] = 'normalize,convert_alpha,convert_digit,convert_alnum,convert_space,hKatakana,hDakuten,fKatakana,fHiragana';
 
 /**
  * Fields
