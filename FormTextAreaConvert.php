@@ -27,21 +27,38 @@
  *
  */
 
-/*
- * Add more validator with hook.
+/**
+ * Class LFormTextArea
+ *
+ * @copyright  Takahiro Kambe 2011
+ * @author     Takahiro Kambe 
+ * @package    lFormText
  */
-$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('LFormValidator', 'validateForm');
 
-/*
- * Backend form fields
- */
-$GLOBALS['BE_FFL']['lText'] = 'LFormTextField';
-$GLOBALS['BE_FFL']['lTextArea'] = 'LFormTextArea';
+class LFormTextArea extends FormTextArea
+{
+    /**
+     * validate values
+     * @param mixed
+     * @return mixed
+     */
+    protected function validator($varInput)
+    {
+        if (is_array($varInput))
+        {
+            foreach ($varInput as $k=>$v)
+            {
+                $varInput[$k] = $this->validator($v);
+            }
+            return $varInput;
+        }
 
-/*
- * Frontend form fields
- */
-$GLOBALS['TL_FFL']['lText'] = 'LFormTextField';
-$GLOBALS['TL_FFL']['lTextArea'] = 'LFormTextArea';
+        $s = trim($varInput);
+        if ($this->conversion) {
+            $s = LTextConverters::normalize($s, $this);
+        }
+        return parent::validator($s);
+    }
+}
 
 ?>
