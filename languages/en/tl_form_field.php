@@ -1,12 +1,6 @@
 <?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
 
 /**
- * Form fields
- */
-$GLOBALS['TL_LANG']['FFL']['lText'] = array('Text field with code conversion', 'A text field with code conversion.');
-$GLOBALS['TL_LANG']['FFL']['lTextArea'] = array('Textarea with code conversion', 'A textarea with code conversion.');
-
-/**
  * Fields
  */
 $GLOBALS['TL_LANG']['tl_form_field']['conversion']   = array('Conversion of input text', 'Perform conversion of input text; Unicode Normalization and/or full-widh/half-width conversion for Japanese.');

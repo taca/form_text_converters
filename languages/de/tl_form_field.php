@@ -1,13 +1,6 @@
 <?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
 
 /**
- * Form fields
- */
-$GLOBALS['TL_LANG']['FFL']['lText'] = array('Textfeld mit Code-Konvertierung', 'Ein einzeiliges Eingabefeld für einen kurzen oder mittellangen Text.');
-$GLOBALS['TL_LANG']['FFL']['lTextArea'] = array('Textarea mit Code-Konvertierung', 'Ein mehrzeiliges Eingabefeld mit Code-Konvertierung für einen mittellangen oder langen Text.
-A text field with small extension.');
-
-/**
  * Fields
  */
 $GLOBALS['TL_LANG']['tl_form_field']['conversion']   = array('Umwandlung der Eingabe von Text', 'Führen Umwandlung von Text einzugeben; Unicode-Normalisierung und / oder full-widh/half-width Konvertierung für Japanisch.');

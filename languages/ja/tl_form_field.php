@@ -1,13 +1,6 @@
 <?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
 
 /**
- * フォームの項目
- */
-$GLOBALS['TL_LANG']['FFL']['lText'] = array('テキスト入力(文字変換)', '文字変換処理の拡張を加えたテキスト入力欄です。');
-$GLOBALS['TL_LANG']['FFL']['lTextArea'] = array('テキストエリア(文字変換)', '文字変換処理の拡張を加えたテキストエリアです。');
-
-
-/**
  * 項目
  */
 $GLOBALS['TL_LANG']['tl_form_field']['conversion']    = array('入力文字列の変換', '入力文字列の変換処理を行います、すなわちUnicodeの正規化や日本語の全角文字と半角文字の変換を設定にしたがって行います。');
