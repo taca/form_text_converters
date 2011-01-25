@@ -30,7 +30,7 @@
 /*
  * Frontend form fields
  */
-$GLOBALS['TL_FFL']['text'] = 'LFormTextField';
-$GLOBALS['TL_FFL']['textarea'] = 'LFormTextArea';
+$GLOBALS['TL_FFL']['text'] = 'FormTextFieldConvert';
+$GLOBALS['TL_FFL']['textarea'] = 'FormTextAreaConvert';
 
 ?>

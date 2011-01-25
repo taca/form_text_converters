@@ -21,21 +21,21 @@
  * PHP version 5
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe
- * @package    lFormText
+ * @package    lFormTextFormTextConverters
  * @license    lgpl3 or later
  * @filesource
  *
  */
 
 /**
- * Class LTextConverters
+ * Class MiscTextConverters
  *
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe 
- * @package    lFormText
+ * @package    FormTextConverters
  */
 
-class LTextConverters
+class MiscTextConverters
 {
     protected static $normalizer;
 

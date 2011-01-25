@@ -21,21 +21,21 @@
  * PHP version 5
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe
- * @package    lFormText
+ * @package    lFormTextFormTextConverters
  * @license    lgpl3 or later
  * @filesource
  *
  */
 
 /**
- * Class LFormTextField
+ * Class LFormTextFieldFormTextFieldConvert
  *
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe 
- * @package    lFormText
+ * @package    FormTextConverters
  */
 
-class LFormTextField extends FormTextField
+class FormTextFieldConvert extends FormTextField
 {
     /**
      * validate values
@@ -55,7 +55,7 @@ class LFormTextField extends FormTextField
 
         $s = trim($varInput);
         if ($this->conversion) {
-            $s = LTextConverters::normalize($s, $this);
+            $s = MiscTextConverters::normalize($s, $this);
         }
         return parent::validator($s);
     }

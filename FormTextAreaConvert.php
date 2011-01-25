@@ -21,24 +21,24 @@
  * PHP version 5
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe
- * @package    lFormText
+ * @package    FormTextConverters
  * @license    lgpl3 or later
  * @filesource
  *
  */
 
 /**
- * Class LFormTextArea
+ * Class FormTextAreaConvert
  *
  * @copyright  Takahiro Kambe 2011
  * @author     Takahiro Kambe 
- * @package    lFormText
+ * @package    FormTextConverters
  */
 
-class LFormTextArea extends FormTextArea
+class FormTextAreaConvert extends FormTextArea
 {
     /**
-     * validate values
+     * validate values with text conversion
      * @param mixed
      * @return mixed
      */
@@ -55,7 +55,7 @@ class LFormTextArea extends FormTextArea
 
         $s = trim($varInput);
         if ($this->conversion) {
-            $s = LTextConverters::normalize($s, $this);
+            $s = MiscTextConverters::normalize($s, $this);
         }
         return parent::validator($s);
     }
