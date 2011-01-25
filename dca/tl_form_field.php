@@ -40,7 +40,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['normalize'] = array
     'eval'      => array('helpwizard' => 'true', 'tl_class' => 'w50')
 );
 
-if (!USE_MBSTRING) {
+if (USE_MBSTRING) {
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['convert_alpha'] = array
     (
         'label'     => &$GLOBALS['TL_LANG']['tl_form_field']['convert_alpha'],
@@ -93,7 +93,7 @@ if (!USE_MBSTRING) {
         'eval'      => array('tl_class' => 'w50 m12'),
         'save_callback' => array
         (
-            array('tl_lform_field', 'validateForm')
+            array('tl_lform_field', 'validateDepends')
         ),
     );
 
@@ -118,7 +118,7 @@ if (!USE_MBSTRING) {
 
 class tl_lform_field extends tl_form_field
 {
-    public function validateForm($varInput, $dc)
+    public function validateDepends($varInput, $dc)
     {
         if (USE_MBSTRING && !empty($varInput)) {
             $l = $dc->Input->post('hKatakana');
