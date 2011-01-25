@@ -116,9 +116,6 @@ if (!USE_MBSTRING) {
     );
 }
 
-$GLOBALS['TL_DCA']['tl_form_field']['fields']['rgxp']['options'][] = 'email-noidn';
-$GLOBALS['TL_DCA']['tl_form_field']['fields']['rgxp']['options'][] = 'url-noidn';
-
 class tl_lform_field extends tl_form_field
 {
     public function validateForm($varInput, $dc)

@@ -32,11 +32,5 @@ $GLOBALS['TL_LANG']['tl_form_field']['toHalfwidth'] = 'Convert to half-width cha
 $GLOBALS['TL_LANG']['tl_form_field']['toFKatakana'] = 'Convert to full-width Katakana';
 $GLOBALS['TL_LANG']['tl_form_field']['toFHiragana'] = 'Convert to full-width Hiragana';
 $GLOBALS['TL_LANG']['tl_form_field']['toHKatakana'] = 'Convert to half-width Katakana';
-$GLOBALS['TL_LANG']['tl_form_field']['email-noidn'] = 
-    array('E-mail address without IDN', 
-          'Checks whether the input is a valid e-mail address without IDN (Internationalizing Domain Names).');
-$GLOBALS['TL_LANG']['tl_form_field']['url-noidn'] = 
-    array('URL format without IDN',
-          'Checks whether the input is a valid URL without IDN (Internationalizing Domain Names).');
 
 ?>
