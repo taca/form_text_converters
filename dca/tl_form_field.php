@@ -4,14 +4,14 @@
  * Palettes
  */
 
-foreach (array('text', 'textArea') as $key) {
+foreach (array('text', 'textarea') as $key) {
     $s = preg_replace('/{expert_legend(:hide)*}[^;]+/',
            '{conversion_legend:hide},conversion;$0',
-            $GLOBALS['TL_DCA']['tl_form_field']['palettes'][strtolower($key)]);
+            $GLOBALS['TL_DCA']['tl_form_field']['palettes'][$key]);
     if (is_null($s)) {
         next;
     }
-    $GLOBALS['TL_DCA']['tl_form_field']['palettes']['l' . ucfirst($key)] = $s;
+    $GLOBALS['TL_DCA']['tl_form_field']['palettes'][$key] = $s;
 }
 
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['__selector__'][] = 'conversion';

@@ -33,15 +33,9 @@
 $GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('LFormValidator', 'validateForm');
 
 /*
- * Backend form fields
- */
-$GLOBALS['BE_FFL']['lText'] = 'LFormTextField';
-$GLOBALS['BE_FFL']['lTextArea'] = 'LFormTextArea';
-
-/*
  * Frontend form fields
  */
-$GLOBALS['TL_FFL']['lText'] = 'LFormTextField';
-$GLOBALS['TL_FFL']['lTextArea'] = 'LFormTextArea';
+$GLOBALS['TL_FFL']['text'] = 'LFormTextField';
+$GLOBALS['TL_FFL']['textarea'] = 'LFormTextArea';
 
 ?>
