@@ -28,11 +28,6 @@
  */
 
 /*
- * Add more validator with hook.
- */
-$GLOBALS['TL_HOOKS']['addCustomRegexp'][] = array('LFormValidator', 'validateForm');
-
-/*
  * Frontend form fields
  */
 $GLOBALS['TL_FFL']['text'] = 'LFormTextField';
