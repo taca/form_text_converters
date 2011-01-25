@@ -3,7 +3,6 @@
 /**
  * Palettes
  */
-
 foreach (array('text', 'textarea') as $key) {
     $s = preg_replace('/{expert_legend(:hide)*}[^;]+/',
            '{conversion_legend:hide},conversion;$0',
