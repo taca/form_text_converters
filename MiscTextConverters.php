@@ -84,7 +84,7 @@ class MiscTextConverters
 
     public static function normalize_utf8($utf8_string, $type = 'NFKC')
     {
-        if (empty($type)) {
+        if (empty($type) || $type == 'none') {
             return $utf8_string;
         }
 

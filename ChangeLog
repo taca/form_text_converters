@@ -1,6 +1,12 @@
+2011-11-28  Takahiro Kambe  <tacahi>
+
+	* Release 1.0.1.
+
+	* Fix a small bug when not using Unicode normalization.
+
 2011-03-07  Takahiro Kambe  <taca>
 
-	* release 1.0 release.
+	* Release 1.0.
 
 	* A little wording change in Japanese translation.
 
