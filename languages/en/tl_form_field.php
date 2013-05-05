@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * Fields
@@ -32,5 +32,3 @@ $GLOBALS['TL_LANG']['tl_form_field']['toHalfwidth'] = 'Convert to half-width cha
 $GLOBALS['TL_LANG']['tl_form_field']['toFKatakana'] = 'Convert to full-width Katakana';
 $GLOBALS['TL_LANG']['tl_form_field']['toFHiragana'] = 'Convert to full-width Hiragana';
 $GLOBALS['TL_LANG']['tl_form_field']['toHKatakana'] = 'Convert to half-width Katakana';
-
-?>

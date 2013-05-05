@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * 項目
@@ -32,5 +32,3 @@ $GLOBALS['TL_LANG']['tl_form_field']['toHalfwidth'] = '半角文字に変換';
 $GLOBALS['TL_LANG']['tl_form_field']['toFKatakana'] = '全角片仮名に変換';
 $GLOBALS['TL_LANG']['tl_form_field']['toFHiragana'] = '全角平仮名に変換';
 $GLOBALS['TL_LANG']['tl_form_field']['toHKatakana'] = '半角片仮名に変換';
-
-?>

@@ -1,7 +1,7 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
- * Copyright (C) 2011
+ * Copyright (C) 2011, 2012, 2013
  * Takahiro Kambe.  All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
  * SUCH DAMAGE.
  *
  * PHP version 5
- * @copyright  Takahiro Kambe 2011
+ * @copyright  Takahiro Kambe 2013
  * @author     Takahiro Kambe
  * @package    lFormText
  * @license    two-clause-bsd
@@ -40,5 +40,3 @@
  */
 $GLOBALS['TL_FFL']['text']     = 'FormTextFieldConvert';
 $GLOBALS['TL_FFL']['textarea'] = 'FormTextAreaConvert';
-
-?>

@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php
 
 /**
  * Palettes
@@ -128,5 +128,3 @@ class tl_lform_field extends tl_form_field
         return $varInput;
     }
 }
-
-?>
