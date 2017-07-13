@@ -1,3 +1,11 @@
+2017-07-14  Takahiro Kambe  <taca@back-street.net>
+
+	* Add LICENSE file.
+
+	* Drop support for Contao 2.x: move SQL definition to DCA file.
+
+	* Style: modernize copyright description and PHP code style.
+
 2013-05-06  Takahiro Kambe  <taca>
 
 	* Release 1.1.0 rc2.
