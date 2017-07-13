@@ -27,7 +27,8 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['conversion'] = array
     'label'     => &$GLOBALS['TL_LANG']['tl_form_field']['conversion'],
 	'inputType' => 'checkbox',
     'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
-    'eval'      => array('submitOnChange'=>true, 'tl_class' => 'w50 m12')
+    'eval'      => array('submitOnChange'=>true, 'tl_class' => 'w50 m12'),
+    'sql'       => "char(1) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['normalize'] = array
@@ -36,7 +37,8 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['normalize'] = array
 	'inputType' => 'select',
     'options'   => array('none', 'NFD', 'NFC', 'NFKC', 'NFKD'),
     'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
-    'eval'      => array('helpwizard' => 'true', 'tl_class' => 'w50')
+    'eval'      => array('helpwizard' => 'true', 'tl_class' => 'w50'),
+    'sql'       => "varchar(4) NOT NULL default ''"
 );
 
 if (USE_MBSTRING) {
@@ -46,7 +48,8 @@ if (USE_MBSTRING) {
         'inputType' => 'select',
         'options'   => array('none', 'toHalfwidth', 'toFullwidth'),
         'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
-        'eval'      => array('tl_class' => 'w50 clr')
+        'eval'      => array('tl_class' => 'w50 clr'),
+	'sql'       => "varchar(12) NOT NULL default ''"
     );
 
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['convert_digit'] = array
@@ -55,7 +58,8 @@ if (USE_MBSTRING) {
         'inputType' => 'select',
         'options'   => array('none', 'toHalfwidth', 'toFullwidth'),
         'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
-        'eval'      => array('tl_class' => 'w50')
+        'eval'      => array('tl_class' => 'w50'),
+ 	'sql'	    => "varchar(12) NOT NULL default ''"
     );
 
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['convert_alnum'] = array
@@ -64,7 +68,8 @@ if (USE_MBSTRING) {
         'inputType' => 'select',
         'options'   => array('none', 'toHalfwidth', 'toFullwidth'),
         'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
-        'eval'      => array('tl_class' => 'w50')
+        'eval'      => array('tl_class' => 'w50'),
+	'sql'	    => "varchar(12) NOT NULL default ''"
     );
 
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['convert_space'] = array
@@ -73,7 +78,8 @@ if (USE_MBSTRING) {
         'inputType' => 'select',
         'options'   => array('none', 'toHalfwidth', 'toFullwidth'),
         'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
-        'eval'      => array('tl_class' => 'w50')
+        'eval'      => array('tl_class' => 'w50'),
+	'sql'	    => "varchar(12) NOT NULL default ''"
     );
 
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['hKatakana'] = array
@@ -82,7 +88,8 @@ if (USE_MBSTRING) {
         'inputType' => 'select',
         'options'   => array('none', 'toFKatakana', 'toFHiragana'),
         'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
-        'eval'      => array('tl_class' => 'w50')
+        'eval'      => array('tl_class' => 'w50'),
+	'sql'	    => "varchar(12) NOT NULL default ''"
     );
 
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['hDakuten'] = array
@@ -94,6 +101,7 @@ if (USE_MBSTRING) {
         (
             array('tl_lform_field', 'validateDepends')
         ),
+	'sql'	    => "char(1) NOT NULL default ''"
     );
 
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['fKatakana'] = array
@@ -102,7 +110,8 @@ if (USE_MBSTRING) {
         'inputType' => 'select',
         'options'   => array('none', 'toFHiragana', 'toHKatakana'),
         'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
-        'eval'      => array('tl_class' => 'w50')
+        'eval'      => array('tl_class' => 'w50'),
+	'sql'	    => "varchar(12) NOT NULL default ''"
     );
 
     $GLOBALS['TL_DCA']['tl_form_field']['fields']['fHiragana'] = array
@@ -111,7 +120,8 @@ if (USE_MBSTRING) {
         'inputType' => 'select',
         'options'   => array('none', 'toFKatakana', 'toHKatakana'),
         'reference' => &$GLOBALS['TL_LANG']['tl_form_field'],
-        'eval'      => array('tl_class' => 'w50')
+        'eval'      => array('tl_class' => 'w50'),
+	'sql'	    => "varchar(12) NOT NULL default ''"
     );
 }
 
