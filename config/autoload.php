@@ -1,13 +1,10 @@
 <?php
 
 /**
- * Contao Open Source CMS
+ * Copyright (c) 2011-2017 Takahiro Kambe
  *
- * Copyright (c) 2005-2013 Leo Feyer
+ * @license    two-clause-bsd
  *
- * @package Form_text_converters
- * @link    https://contao.org
- * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
 
